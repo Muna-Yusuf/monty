@@ -1,6 +1,20 @@
 #include "monty.h"
 
-line_t global_v;
+/**
+ * free_lists - frees the doubly linked list.
+ * @head: struct.
+ * Return: void.
+ */
+void free_lists(stack_t *head)
+{
+	stack_t *tmpo;
+
+	while ((tmpo = head) != NULL)
+	{
+		head = head->next;
+		free(tmpo);
+	}
+}
 
 /**
  * _free - fress the variables.

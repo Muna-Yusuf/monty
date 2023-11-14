@@ -63,5 +63,13 @@ typedef struct line
 
 extern line_t global_v;
 
+void _free(void);
+void inital(FILE *file_des);
+FILE *var_check(int argc, char *argv[]);
+int _strcmp(char *s1, char *s2);
+int searchs(char *str, char ch);
+char *_strtoky(char *s, char *d);
+void free_lists(stack_t *head);
+
 
 #endif

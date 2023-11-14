@@ -1,6 +1,5 @@
 #include "monty.h"
 
-
 /**
  * main - where the program starts.
  * @argc: int.
@@ -12,33 +11,31 @@ int main(int argc, char *argv[])
 	void (*f)(stack_t **stack, unsigned int line_number); /**/
 	FILE *file_des;
 	size_t size = 256;
-	ssize_t num_line = 0; /*num*/
-	char *line[2] = {NULL, NULL}; /*s*/
+	ssize_t num_line = 0;
+	char *line[2] = {NULL, NULL};
 
-	file_des = check_input(argc, argv); /**/
-	start_vglo(fd);
-	nlines = getline(&vglo.buffer, &size, fd);
-	while (nlines != -1)
+	file_des = var_check(argc, argv);
+	inital(file_des);
+	num_line = getline(&vglo.buffer, &size, fd);
+	while (num_line != -1)
 	{
-		lines[0] = _strtoky(vglo.buffer, " \t\n");
-		if (lines[0] && lines[0][0] != '#')
+		line[0] = _strtoky(global_v.buffer, " \t\n");
+		if (line[0] && line[0][0] != '#')
 		{
-			f = get_opcodes(lines[0]);
+			f = get_opcodes(line[0]); /*function*/
 			if (!f)
 			{
-				dprintf(2, "L%u: ", vglo.cont);
-				dprintf(2, "unknown instruction %s\n", lines[0]);
-				free_vglo();
+				dprintf(2, "L%u: ", global_v.cont);
+				dprintf(2, "unknown instruction %s\n", line[0]);
+				_free();
 				exit(EXIT_FAILURE);
 			}
-			vglo.arg = _strtoky(NULL, " \t\n");
-			f(&vglo.head, vglo.cont);
+			global_v.arg = _strtoky(NULL, " \t\n");
+			f(&global_v.head, global_v.cont);
 		}
-		nlines = getline(&vglo.buffer, &size, fd);
-		vglo.cont++;
+		num_line = getline(&global_v.buffer, &size, file_des);
+		global_v.cont++;
 	}
-
-	free_vglo();
-
+	_free();
 	return (0);
 }
