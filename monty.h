@@ -70,6 +70,10 @@ int _strcmp(char *s1, char *s2);
 int searchs(char *str, char ch);
 char *_strtoky(char *s, char *d);
 void free_lists(stack_t *head);
-
+stack_t *add_dnodeint(stack_t **head, const int n);
+stack_t *add_dnodeint_end(stack_t **head, const int x);
+void (*check_opcode(char *op))(stack_t **stack, unsigned int line_number);
+void *_strcat(unsigned int num, unsigned int size);
+void *_realloc(void *ptr, unsigned int size1, unsigned int size2);
 
 #endif

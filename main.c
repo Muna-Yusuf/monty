@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-	void (*f)(stack_t **stack, unsigned int line_number); /**/
+	void (*f)(stack_t **stack, unsigned int line_number);
 	FILE *file_des;
 	size_t size = 256;
 	ssize_t num_line = 0;
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		line[0] = _strtoky(global_v.buffer, " \t\n");
 		if (line[0] && line[0][0] != '#')
 		{
-			f = get_opcodes(line[0]); /*function*/
+			f = check_opcode(line[0]);
 			if (!f)
 			{
 				dprintf(2, "L%u: ", global_v.cont);

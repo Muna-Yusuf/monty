@@ -85,3 +85,77 @@ char *_strtoky(char *s, char *d)
 	}
 	return (NULL);
 }
+
+/**
+ * _strcat - function to concatenate 2 strings
+ * @num: elements
+ * @size: type of the num
+ * Return: void.
+ */
+void *_strcat(unsigned int num, unsigned int size)
+{
+	void *num2 = NULL;
+	unsigned int i;
+
+	if (num == 0 || size == 0)
+	{
+		return (NULL);
+	}
+	num2 = malloc(num * size);
+	if (num2 == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < (num * size); i++)
+	{
+		*((char *)(num2) + i) = 0;
+	}
+	return (num2);
+}
+
+/**
+ * _realloc - function copies the content & change the size
+ * @ptr: pointer.
+ * @size1:the old size.
+ * @size2:the new size.
+ * Return: void.
+ */
+void *_realloc(void *ptr, unsigned int size1, unsigned int size2)
+{
+	char *ptr2 = NULL;
+	unsigned int i;
+
+	if (size2 == size1)
+		return (ptr);
+	if (ptr == NULL)
+	{
+		ptr2 = malloc(size2);
+		if (!ptr2)
+			return (NULL);
+		return (ptr2);
+	}
+	if (size2 == 0 && ptr != NULL)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	if (size2 > size1)
+	{
+		ptr2 = malloc(size2);
+		if (!p)
+			return (NULL);
+		for (i = 0; i < size1; i++)
+			p[i] = *((char *)ptr + i);
+		free(ptr);
+	}
+	else
+	{
+		ptr2 = malloc(size2);
+		if (!ptr2)
+			return (NULL);
+		for (i = 0; i < size2; i++)
+			p[i] = *((char *)ptr + i);
+		free(ptr);
+	}
+	return (ptr2);
+}
