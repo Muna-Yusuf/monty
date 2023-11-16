@@ -87,6 +87,8 @@ void _add(stack_t **head, unsigned int line_num);
 void _nop(stack_t **head, unsigned int line_num);
 void _sub(stack_t **head, unsigned int line_num);
 void _div(stack_t **head, unsigned int line_num);
+void _mul(stack_t **head, unsigned int line_num);
+void _mod(stack_t **head, unsigned int line_num);
 
 
 
