@@ -75,7 +75,7 @@ void _mod(stack_t **head, unsigned int line_num)
 		;
 	if (y < 2)
 	{
-		fprintf(stderr, "L%u: can't div, stack too short\n", line_num);
+		fprintf(stderr, "L%u: can't mod, stack too short\n", line_num);
 		_free();
 		exit(EXIT_FAILURE);
 	}
