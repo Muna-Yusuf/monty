@@ -1,15 +1,16 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define  _GNU_SOURCE
 
-#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/stat.h>
+
 #include <sys/types.h>
 #include <fcntl.h>
 #include <ctype.h>
-
+#include <stdio.h>
 
 
 /**
@@ -57,9 +58,9 @@ typedef struct line
 	unsigned int cont;
 	char *arg;
 	stack_t *head;
-	FILE file_des;
+	FILE *file_des;
 	char *_buffer;
-} line_t
+} line_t;
 
 extern line_t global_v;
 
@@ -75,5 +76,18 @@ stack_t *add_dnodeint_end(stack_t **head, const int x);
 void (*check_opcode(char *op))(stack_t **stack, unsigned int line_number);
 void *_strcat(unsigned int num, unsigned int size);
 void *_realloc(void *ptr, unsigned int size1, unsigned int size2);
+void _push(stack_t **head, unsigned int line_num);
+void _pall(stack_t **head, unsigned int line_num);
+void _pint(stack_t **head, unsigned int line_num);
+void _pop(stack_t **head, unsigned int line_num);
+void _swap(stack_t **head, unsigned int line_num);
+void _queue(stack_t **head, unsigned int line_num);
+void _stack(stack_t **head, unsigned int line_num);
+void _add(stack_t **head, unsigned int line_num);
+void _nop(stack_t **head, unsigned int line_num);
+void _sub(stack_t **head, unsigned int line_num);
+
+
+
 
 #endif

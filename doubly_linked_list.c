@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 /**
  * add_dnodeint_end - function adds a new node at the end of the list.
@@ -16,11 +17,11 @@ stack_t *add_dnodeint_end(stack_t **head, const int x)
 	tmp = malloc(sizeof(stack_t));
 	if (!tmp)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		_free();
 		exit(EXIT_FAILURE);
 	}
-	tmp->x = x;
+	tmp->n = x;
 	if (*head == NULL)
 	{
 		tmp->next = *head;
@@ -52,7 +53,7 @@ stack_t *add_dnodeint(stack_t **head, const int n)
 	tmp = malloc(sizeof(stack_t));
 	if (!tmp)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		_free();
 		exit(EXIT_FAILURE);
 	}

@@ -20,13 +20,6 @@ void (*check_opcode(char *op))(stack_t **stack, unsigned int line_number)
 		{"add", _add},
 		{"nop", _nop},
 		{"sub", _sub},
-		{"mul", _mul},
-		{"div", _div},
-		{"mod", _mod},
-		{"pchar", _pchar},
-		{"pstr", _pstr},
-		{"rotl", _rotl},
-		{"rotr", _rotr},
 		{NULL, NULL}
 	};
 	int x;

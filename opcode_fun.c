@@ -8,12 +8,12 @@
  */
 void _push(stack_t **head, unsigned int line_num)
 {
-	int x, y; /*n, j*/
+	int x, y;
 
 	if (!global_v.arg)
 	{
-		dprintf(2, "L%u: ", line_num);
-		dprintf(2, "usage: push integer\n");
+		fprintf(stderr, "L%u: ", line_num);
+		fprintf(stderr,"usage: push integer\n");
 		_free();
 		exit(EXIT_FAILURE);
 	}
@@ -22,8 +22,8 @@ void _push(stack_t **head, unsigned int line_num)
 	{
 		if (!isdigit(global_v.arg[y]) && global_v.arg[y] != '-') /*function*/
 		{
-			dprintf(2, "L%u: ", line_num);
-			dprintf(2, "usage: push integer\n");
+			fprintf(stderr, "L%u: ", line_num);
+			fprintf(stderr, "usage: push integer\n");
 			_free();
 			exit(EXIT_FAILURE);
 		}
@@ -69,8 +69,8 @@ void _pint(stack_t **head, unsigned int line_num)
 
 	if (*head == NULL)
 	{
-		dprintf(2, "L%u: ", line_num);
-		dprintf(2, "can't pint, stack empty\n");
+		fprintf(stderr, "L%u: ", line_num);
+		fprintf(stderr, "can't pint, stack empty\n");
 		_free();
 		exit(EXIT_FAILURE);
 	}
@@ -90,7 +90,7 @@ void _pop(stack_t **head, unsigned int line_num)
 
 	if (head == NULL || *head == NULL)
 	{
-		dprintf(2, "L%u: can't pop an empty stack\n", line_num);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_num);
 		_free();
 		exit(EXIT_FAILURE);
 	}
@@ -117,7 +117,7 @@ void _swap(stack_t **head, unsigned int line_num)
 
 	if (y < 2)
 	{
-		dprintf(2, "L%u: can't swap, stack too short\n", line_num);
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_num);
 		_free();
 		exit(EXIT_FAILURE);
 	}

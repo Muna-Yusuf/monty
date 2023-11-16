@@ -1,5 +1,5 @@
 #include "monty.h"
-
+line_t global_v;
 /**
  * free_lists - frees the doubly linked list.
  * @head: struct.
@@ -23,9 +23,9 @@ void free_lists(stack_t *head)
  */
 void _free(void)
 {
-	free_lists(global_v.head); /*function*/
-	free(global_v.buffer);
-	fclose(global_v.file_des)
+	free_lists(global_v.head);
+	free(global_v._buffer);
+	fclose(global_v.file_des);
 }
 
 /**
@@ -40,7 +40,7 @@ void inital(FILE *file_des)
 	global_v.arg = NULL;
 	global_v.head = NULL;
 	global_v.file_des = file_des;
-	global_v.buffer = NULL;
+	global_v._buffer = NULL;
 }
 
 /**
@@ -55,13 +55,13 @@ FILE *var_check(int argc, char *argv[])
 
 	if (argc == 1 || argc > 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file_des = fopen(argv[1], "r");
 	if (file_des == NULL)
 	{
-		dprintf(2, "Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	return (file_des);

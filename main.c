@@ -16,24 +16,24 @@ int main(int argc, char *argv[])
 
 	file_des = var_check(argc, argv);
 	inital(file_des);
-	num_line = getline(&vglo.buffer, &size, fd);
+	num_line = getline(&(global_v._buffer), &size, file_des);
 	while (num_line != -1)
 	{
-		line[0] = _strtoky(global_v.buffer, " \t\n");
+		line[0] = _strtoky(global_v._buffer, " \t\n");
 		if (line[0] && line[0][0] != '#')
 		{
 			f = check_opcode(line[0]);
 			if (!f)
 			{
-				dprintf(2, "L%u: ", global_v.cont);
-				dprintf(2, "unknown instruction %s\n", line[0]);
+				fprintf(stderr, "L%u: ", global_v.cont);
+				fprintf(stderr, "unknown instruction %s\n", line[0]);
 				_free();
 				exit(EXIT_FAILURE);
 			}
 			global_v.arg = _strtoky(NULL, " \t\n");
 			f(&global_v.head, global_v.cont);
 		}
-		num_line = getline(&global_v.buffer, &size, file_des);
+		num_line = getline(&(global_v._buffer), &size, file_des);
 		global_v.cont++;
 	}
 	_free();
