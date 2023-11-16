@@ -13,7 +13,7 @@ void _push(stack_t **head, unsigned int line_num)
 	if (!global_v.arg)
 	{
 		fprintf(stderr, "L%u: ", line_num);
-		fprintf(stderr,"usage: push integer\n");
+		fprintf(stderr, "usage: push integer\n");
 		_free();
 		exit(EXIT_FAILURE);
 	}
